@@ -1,51 +1,48 @@
-import React, { useState } from "react";
-import Input from "../ui/components/Input";
-import Button from "../ui/components/Button";
-import { v4 as uuidv4 } from 'uuid'
+import React, { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import Input from "../components/Input";
+import Button from "../components/Button";
+import { AuthContext } from '../contexts/AuthContext';
+import "../styles/Login.css";
 
-const URL = 'http://localhost:5000'
+const URL = 'http://localhost:5000';
 
 const Login = () => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
+        setEmail(e.target.value);
+    };
 
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+        setPassword(e.target.value);
+    };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const response = await fetch(`${URL}/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: uuidv4(),
-                email,
-                password
-            })
-        })
+        const response = await fetch(`${URL}/users?email=${email}&password=${password}`);
+        const users = await response.json();
 
-        if (response.ok) {
-            alert('User created')
+        if (users.length > 0) {
+            const user = users[0];
+            login(user.id);
+            navigate('/products');
         } else {
-            alert('Error')
+            alert('E-mail ou senha estão incorretos');
         }
-    }
+    };
 
     return (
-        <div>
-            <h1>Entrar</h1>
+        <div className="login-container">
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <Input
-                    type="text"
-                    name="username"
+                    type="email"
+                    name="email"
                     placeholder="Email"
                     onChange={handleEmailChange}
                 />
@@ -55,10 +52,10 @@ const Login = () => {
                     placeholder="Senha"
                     onChange={handlePasswordChange}
                 />
-                <Button type="confirm-button">Entrar</Button>
+                <Button type="submit">Entrar</Button>
             </form>
         </div>
-    )
+    );
 };
 
 export default Login;

@@ -1,0 +1,24 @@
+.sales-list-container {
+    padding: 1em;
+  }
+  
+  .sales-list-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sales-list-container th,
+  .sales-list-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .sales-list-container th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  
+  .sales-list-container button {
+    margin-bottom: 1em;
+  }
+  

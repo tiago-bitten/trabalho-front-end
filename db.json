@@ -1,6 +1,68 @@
 {
-    "users": [],
-    "products": [],
-    "orders": [],
-    "orderItems": []
+  "users": [
+    {
+      "id": "c7551791-7ca8-4acd-8c06-ae84dc331439",
+      "email": "tiago@gmail.com",
+      "password": "123"
+    }
+  ],
+  "products": [
+    {
+      "id": "ec5d5ef0-80c0-473d-be31-a1c239b46708",
+      "name": "teste",
+      "description": "testes",
+      "price": "15",
+      "categoryId": "9d77db32-c363-4e18-9950-c3b8cbf57bf3",
+      "stock": 136
+    },
+    {
+      "id": "6169411b-17f1-43ee-a759-9f75d16f89ce",
+      "name": "testtestes",
+      "description": "testsetes",
+      "price": "412",
+      "categoryId": "0eb6f074-b7ed-404f-9952-0a70f07c4d32",
+      "stock": 0
+    }
+  ],
+  "categories": [
+    {
+      "id": "9d77db32-c363-4e18-9950-c3b8cbf57bf3",
+      "name": "s"
+    },
+    {
+      "id": "0eb6f074-b7ed-404f-9952-0a70f07c4d32",
+      "name": "tete"
+    }
+  ],
+  "sales": [
+    {
+      "id": "df78d4cb-f0f3-4701-a8d4-2e9420947a21",
+      "productId": null,
+      "quantity": "1",
+      "dateSale": "2024-06-25T17:05:11.470Z"
+    },
+    {
+      "id": "67a3a91e-eb95-4a79-90c9-331015578c46",
+      "productId": null,
+      "quantity": "2",
+      "dateSale": "2024-06-25T17:11:51.207Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    },
+    {
+      "id": "ede2c06e-34fb-4b7b-aaa2-9337b08d60da",
+      "productId": "6169411b-17f1-43ee-a759-9f75d16f89ce",
+      "quantity": "1",
+      "price": 412,
+      "dateSale": "2024-06-25T17:26:04.117Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    },
+    {
+      "id": "be513adc-8833-4fb2-aaae-64daafdae4cb",
+      "productId": "ec5d5ef0-80c0-473d-be31-a1c239b46708",
+      "quantity": "5",
+      "price": 75,
+      "dateSale": "2024-06-25T17:28:26.949Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    }
+  ]
 }

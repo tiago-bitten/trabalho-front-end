@@ -1,0 +1,14 @@
+.category-list-container {
+    padding: 1em;
+  }
+  
+  .category-list-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .category-list-container ul li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  

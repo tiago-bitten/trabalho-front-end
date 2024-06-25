@@ -1,0 +1,23 @@
+.product-list-container {
+  padding: 1em;
+}
+
+.product-list-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-list-container th,
+.product-list-container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.product-list-container th {
+  background-color: #f4f4f4;
+  text-align: left;
+}
+
+.product-list-container button {
+  margin-bottom: 1em;
+}
