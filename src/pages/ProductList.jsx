@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Modal from "../components/Modal";
 import ProductForm from "../components/ProductForm";
 import ProductTable from '../components/ProductTable';
+import ConfirmationModal from '../components/ConfirmationModal';
 import "../styles/ProductList.css";
 
 const URL = 'http://localhost:5000';
@@ -54,7 +55,7 @@ const ProductList = () => {
     return (
         <div className="product-list-container">
             <h1>Produtos</h1>
-            <Button type="button" onClick={() => setShowModal(true)}>Novo</Button>
+            <Button type="button" onClick={() => setShowModal(true)}>Novo produto</Button>
             <ProductTable 
                 products={products} 
                 categories={categories} 
@@ -68,13 +69,13 @@ const ProductList = () => {
                     categories={categories} 
                 />
             </Modal>
-            <Modal show={showDeleteModal} onClose={() => setShowDeleteModal(false)}>
-                <div>
-                    <h2>Você tem certeza que deseja excluir?</h2>
-                    <Button type="button" onClick={handleDeleteConfirm}>Sim</Button>
-                    <Button type="button" onClick={() => setShowDeleteModal(false)}>Não</Button>
-                </div>
-            </Modal>
+            <ConfirmationModal 
+                show={showDeleteModal} 
+                onClose={() => setShowDeleteModal(false)} 
+                onConfirm={handleDeleteConfirm}
+                message="Você tem certeza que deseja excluir?"
+                subMessage=" Esta operação será irreversível."
+            />
         </div>
     );
 };

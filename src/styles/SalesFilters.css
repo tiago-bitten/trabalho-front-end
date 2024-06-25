@@ -1,0 +1,21 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+.date-filters {
+    display: flex;
+    gap: 1em;
+}
+
+.date-filters label {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-filters input {
+    padding: 0.5em;
+    margin-top: 0.5em;
+}

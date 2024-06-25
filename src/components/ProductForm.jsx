@@ -72,11 +72,20 @@ const ProductForm = ({ onClose, productId, categories }) => {
 
         if (response.ok) {
             alert('Produto salvo com sucesso');
-            onClose();
+            handleCancel();
         } else {
             alert('Erro ao salvar produto');
         }
     };
+
+    const handleCancel = () => {
+        setName('');
+        setDescription('');
+        setPrice('');
+        setCategoryId('');
+        setStock('');
+        onClose();
+    }
 
     return (
         <div className="product-form-container">

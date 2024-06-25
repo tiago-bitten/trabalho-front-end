@@ -1,24 +1,63 @@
 .sales-list-container {
     padding: 1em;
-  }
-  
-  .sales-list-container table {
+    margin: 3em 3em 0 3em;
+}
+
+.sales-list-container h1 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.date-filters {
+    display: flex;
+    gap: 1em;
+}
+
+.date-filters label {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-filters input {
+    padding: 0.5em;
+    margin-top: 0.5em;
+}
+
+.sales-list-container table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .sales-list-container th,
-  .sales-list-container td {
+    overflow-x: auto;
+}
+
+.sales-list-container th,
+.sales-list-container td {
     border: 1px solid #ddd;
     padding: 8px;
-  }
-  
-  .sales-list-container th {
+}
+
+.sales-list-container th {
     background-color: #f4f4f4;
     text-align: left;
-  }
-  
-  .sales-list-container button {
+}
+
+.sales-list-container button {
     margin-bottom: 1em;
-  }
-  
+}
+
+.total-sales {
+    margin-top: 5em;
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+}
+
+.charts {
+    margin-top: 2em;
+}

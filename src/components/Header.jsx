@@ -21,14 +21,14 @@ const Header = () => {
         <header className="header">
             <div className="header-container">
                 <div className="logo">
-                    <Link to="/">Logo</Link>
+                    <Link to="/products">Sistema</Link>
                 </div>
                 <nav className={`nav ${menuOpen ? 'open' : ''}`}>
                     <ul>
                         {!isAuthenticated ? (
                             <>
                                 <li><Link to="/login">Entrar</Link></li>
-                                <li><Link to="/register">Criar Conta</Link></li>
+                                <li><Link to="/register">Criar conta</Link></li>
                             </>
                         ) : (
                             <>

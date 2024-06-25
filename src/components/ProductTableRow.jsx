@@ -1,4 +1,5 @@
 import React from 'react';
+import "../styles/ProductTableRow.css";
 
 const ProductTableRow = ({ product, getCategoryName, onEdit, onDelete }) => {
     return (
@@ -9,8 +10,8 @@ const ProductTableRow = ({ product, getCategoryName, onEdit, onDelete }) => {
             <td>{getCategoryName(product.categoryId)}</td>
             <td>{product.stock}</td>
             <td>
-                <button onClick={() => onEdit(product.id)}>Editar</button>
-                <button onClick={() => onDelete(product.id)}>Excluir</button>
+                <button className="edit-button" onClick={() => onEdit(product.id)}>Editar</button>   
+                <button className="delete-button" onClick={() => onDelete(product.id)}>Excluir</button>
             </td>
         </tr>
     );

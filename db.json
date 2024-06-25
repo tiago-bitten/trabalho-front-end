@@ -1,67 +1,151 @@
 {
   "users": [
     {
+      "name": "Tiago",
       "id": "c7551791-7ca8-4acd-8c06-ae84dc331439",
       "email": "tiago@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "6c8e7f33-3058-4de3-a923-bd19f0c18689",
+      "name": "NOVOS ATENDIMENTOS",
+      "email": "teste@gmail.com",
+      "password": "123",
+      "cpf": "19191919",
+      "birthday": "2024-06-05"
     }
   ],
   "products": [
     {
       "id": "ec5d5ef0-80c0-473d-be31-a1c239b46708",
-      "name": "teste",
-      "description": "testes",
-      "price": "15",
-      "categoryId": "9d77db32-c363-4e18-9950-c3b8cbf57bf3",
-      "stock": 136
+      "name": "Compressor",
+      "description": "Compressor de ar industrial",
+      "price": "1500.00",
+      "categoryId": null,
+      "stock": 6
     },
     {
       "id": "6169411b-17f1-43ee-a759-9f75d16f89ce",
-      "name": "testtestes",
-      "description": "testsetes",
-      "price": "412",
-      "categoryId": "0eb6f074-b7ed-404f-9952-0a70f07c4d32",
-      "stock": 0
+      "name": "Furadeira",
+      "description": "Furadeira elétrica",
+      "price": "200.00",
+      "categoryId": "15d58933-26f6-4130-9a96-39f878047262",
+      "stock": 20
+    },
+    {
+      "id": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "name": "Martelo",
+      "description": "Martelo de aço",
+      "price": "50.00",
+      "categoryId": "9d77db32-c363-4e18-9950-c3b8cbf57bf3",
+      "stock": 100
+    },
+    {
+      "id": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+      "name": "Serra Circular",
+      "description": "Serra circular de bancada",
+      "price": "500.00",
+      "categoryId": null,
+      "stock": 5
+    },
+    {
+      "id": "c3d4e5f6-7890-12ab-cdef-3456789012cd",
+      "name": "Chave de Fenda",
+      "description": "Chave de fenda de precisão",
+      "price": "15.00",
+      "categoryId": "15d58933-26f6-4130-9a96-39f878047262",
+      "stock": 200
+    },
+    {
+      "id": "d4e5f6g7-8901-23ab-cdef-4567890123de",
+      "name": "Alicate",
+      "description": "Alicate universal",
+      "price": "30.00",
+      "categoryId": null,
+      "stock": 50
+    },
+    {
+      "id": "82c7f868-c40a-4545-a936-0a4d1d74351b",
+      "name": "testse",
+      "description": "testes",
+      "price": "1",
+      "categoryId": "9d77db32-c363-4e18-9950-c3b8cbf57bf3",
+      "stock": "5"
     }
   ],
   "categories": [
     {
       "id": "9d77db32-c363-4e18-9950-c3b8cbf57bf3",
-      "name": "s"
+      "name": "Ferramentas"
     },
     {
-      "id": "0eb6f074-b7ed-404f-9952-0a70f07c4d32",
-      "name": "tete"
+      "id": "15d58933-26f6-4130-9a96-39f878047262",
+      "name": "Acessórios"
     }
   ],
   "sales": [
     {
       "id": "df78d4cb-f0f3-4701-a8d4-2e9420947a21",
-      "productId": null,
+      "productId": "ec5d5ef0-80c0-473d-be31-a1c239b46708",
       "quantity": "1",
-      "dateSale": "2024-06-25T17:05:11.470Z"
+      "price": 1500,
+      "dateSale": "2024-06-01T10:05:11.470Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
     },
     {
       "id": "67a3a91e-eb95-4a79-90c9-331015578c46",
-      "productId": null,
+      "productId": "6169411b-17f1-43ee-a759-9f75d16f89ce",
       "quantity": "2",
-      "dateSale": "2024-06-25T17:11:51.207Z",
+      "price": 400,
+      "dateSale": "2024-06-05T12:11:51.207Z",
       "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
     },
     {
       "id": "ede2c06e-34fb-4b7b-aaa2-9337b08d60da",
-      "productId": "6169411b-17f1-43ee-a759-9f75d16f89ce",
-      "quantity": "1",
-      "price": 412,
-      "dateSale": "2024-06-25T17:26:04.117Z",
+      "productId": "a1b2c3d4-5678-90ab-cdef-1234567890ab",
+      "quantity": "3",
+      "price": 150,
+      "dateSale": "2024-06-10T14:26:04.117Z",
       "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
     },
     {
       "id": "be513adc-8833-4fb2-aaae-64daafdae4cb",
-      "productId": "ec5d5ef0-80c0-473d-be31-a1c239b46708",
+      "productId": "b2c3d4e5-6789-01ab-cdef-2345678901bc",
+      "quantity": "1",
+      "price": 500,
+      "dateSale": "2024-06-15T16:28:26.949Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    },
+    {
+      "id": "cf624adc-9943-4c23-bc87-75e7ffccdf12",
+      "productId": "c3d4e5f6-7890-12ab-cdef-3456789012cd",
+      "quantity": "10",
+      "price": 150,
+      "dateSale": "2024-06-20T18:30:20.123Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    },
+    {
+      "id": "df735adc-9923-4d23-bd87-85e7ffdcdf12",
+      "productId": "d4e5f6g7-8901-23ab-cdef-4567890123de",
       "quantity": "5",
-      "price": 75,
-      "dateSale": "2024-06-25T17:28:26.949Z",
+      "price": 150,
+      "dateSale": "2024-06-25T20:35:25.456Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    },
+    {
+      "id": "2e1c1821-54fc-4762-8fca-8933a3420c66",
+      "productId": "ec5d5ef0-80c0-473d-be31-a1c239b46708",
+      "quantity": "4",
+      "price": 6000,
+      "dateSale": "2024-06-25T18:52:48.532Z",
+      "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
+    },
+    {
+      "id": "ba61516a-0207-4176-bbfa-c0641f8a8d8b",
+      "productId": null,
+      "quantity": "2",
+      "price": 30,
+      "dateSale": "2024-06-25T19:08:30.267Z",
       "userId": "c7551791-7ca8-4acd-8c06-ae84dc331439"
     }
   ]
