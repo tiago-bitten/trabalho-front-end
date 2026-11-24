@@ -2,30 +2,48 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
+const STORAGE_KEYS = {
+    authenticated: 'authenticated',
+    userId: 'userId',
+};
+
+const saveSession = (userId) => {
+    sessionStorage.setItem(STORAGE_KEYS.authenticated, 'true');
+    sessionStorage.setItem(STORAGE_KEYS.userId, userId);
+};
+
+const clearSession = () => {
+    sessionStorage.removeItem(STORAGE_KEYS.authenticated);
+    sessionStorage.removeItem(STORAGE_KEYS.userId);
+};
+
+const loadSession = () => ({
+    isAuthenticated: sessionStorage.getItem(STORAGE_KEYS.authenticated) === 'true',
+    userId: sessionStorage.getItem(STORAGE_KEYS.userId),
+});
+
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userId, setUserId] = useState(null);
 
-    useEffect(() => {
-        const authenticated = sessionStorage.getItem('authenticated') === 'true';
-        const storedUserId = sessionStorage.getItem('userId');
-        
+    const updateAuthState = (authenticated, id) => {
         setIsAuthenticated(authenticated);
-        setUserId(storedUserId);
-    }, []);
-
-    const login = (id) => {
-        sessionStorage.setItem('authenticated', 'true');
-        sessionStorage.setItem('userId', id);
-        setIsAuthenticated(true);
         setUserId(id);
     };
 
+    useEffect(() => {
+        const session = loadSession();
+        updateAuthState(session.isAuthenticated, session.userId);
+    }, []);
+
+    const login = (id) => {
+        saveSession(id);
+        updateAuthState(true, id);
+    };
+
     const logout = () => {
-        sessionStorage.removeItem('authenticated');
-        sessionStorage.removeItem('userId');
-        setIsAuthenticated(false);
-        setUserId(null);
+        clearSession();
+        updateAuthState(false, null);
     };
 
     return (

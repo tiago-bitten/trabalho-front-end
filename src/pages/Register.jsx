@@ -1,60 +1,31 @@
-import React, { useState } from "react";
-import Input from "../components/Input";
-import Button from "../components/Button";
-import { v4 as uuidv4 } from 'uuid';
-import "../styles/Register.css";
+import React from 'react';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import { useFormFields } from '../hooks/useFormFields';
+import { createUser } from '../services/userService';
+import '../styles/Register.css';
 
-const URL = 'http://localhost:5000';
+const EMPTY_REGISTRATION_FORM = {
+    name: '',
+    cpf: '',
+    birthday: '',
+    email: '',
+    password: '',
+};
+
+const REGISTRATION_SUCCESS_MESSAGE = 'Conta criada com sucesso!';
 
 const Register = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [birthday, setBirthday] = useState('');
-    const [password, setPassword] = useState('');
+    const [registrationData, handleFieldChange] = useFormFields(EMPTY_REGISTRATION_FORM);
 
-    const handleNameChange = (e) => {
-        setName(e.target.value);
-    };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
-
-    const handleCpfChange = (e) => {
-        setCpf(e.target.value);
-    }
-
-    const handleBirthdayChange = (e) => {
-        setBirthday(e.target.value);
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const response = await fetch(`${URL}/users`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: uuidv4(),
-                name,
-                email,
-                password,
-                cpf,
-                birthday
-            })
-        });
-
-        if (response.ok) {
-            alert('Conta criada com sucesso!');
-        } else {
-            alert('Error');
+        try {
+            await createUser(registrationData);
+            alert(REGISTRATION_SUCCESS_MESSAGE);
+        } catch (error) {
+            alert(error.message);
         }
     };
 
@@ -63,36 +34,11 @@ const Register = () => {
             <div className="register-container">
                 <h1>Se cadastre</h1>
                 <form onSubmit={handleSubmit}>
-                    <Input
-                        type="text"
-                        name="name"
-                        placeholder="Nome"
-                        onChange={handleNameChange}
-                    />
-                    <Input
-                        type="cpf"
-                        name="cpf"
-                        placeholder="CPF"
-                        onChange={handleCpfChange}
-                    />
-                    <Input
-                        type="date"
-                        name="birthday"
-                        placeholder="Data de Nascimento"
-                        onChange={handleBirthdayChange}
-                    />
-                    <Input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        onChange={handleEmailChange}
-                    />
-                    <Input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        onChange={handlePasswordChange}
-                    />
+                    <Input type="text" name="name" placeholder="Nome" onChange={handleFieldChange} />
+                    <Input type="text" name="cpf" placeholder="CPF" onChange={handleFieldChange} />
+                    <Input type="date" name="birthday" placeholder="Data de Nascimento" onChange={handleFieldChange} />
+                    <Input type="email" name="email" placeholder="Email" onChange={handleFieldChange} />
+                    <Input type="password" name="password" placeholder="Senha" onChange={handleFieldChange} />
                     <Button type="submit">Cadastrar</Button>
                 </form>
             </div>

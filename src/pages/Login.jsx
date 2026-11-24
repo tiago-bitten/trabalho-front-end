@@ -1,38 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Input from '../components/Input';
+import Button from '../components/Button';
 import { AuthContext } from '../contexts/AuthContext';
-import "../styles/Login.css";
+import { useFormFields } from '../hooks/useFormFields';
+import { findUserByCredentials } from '../services/userService';
+import '../styles/Login.css';
 
-const URL = 'http://localhost:5000';
+const HOME_ROUTE = '/products';
+const INVALID_CREDENTIALS_MESSAGE = 'E-mail ou senha estão incorretos';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [credentials, handleFieldChange] = useFormFields({ email: '', password: '' });
     const navigate = useNavigate();
     const { login } = useContext(AuthContext);
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+        try {
+            const user = await findUserByCredentials(credentials.email, credentials.password);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+            if (!user) {
+                alert(INVALID_CREDENTIALS_MESSAGE);
+                return;
+            }
 
-        const response = await fetch(`${URL}/users?email=${email}&password=${password}`);
-        const users = await response.json();
-
-        if (users.length > 0) {
-            const user = users[0];
             login(user.id);
-            navigate('/products');
-        } else {
-            alert('E-mail ou senha estão incorretos');
+            navigate(HOME_ROUTE);
+        } catch (error) {
+            alert(error.message);
         }
     };
 
@@ -40,18 +37,8 @@ const Login = () => {
         <div className="login-container">
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <Input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    onChange={handleEmailChange}
-                />
-                <Input
-                    type="password"
-                    name="password"
-                    placeholder="Senha"
-                    onChange={handlePasswordChange}
-                />
+                <Input type="email" name="email" placeholder="Email" onChange={handleFieldChange} />
+                <Input type="password" name="password" placeholder="Senha" onChange={handleFieldChange} />
                 <Button type="submit">Entrar</Button>
             </form>
         </div>
